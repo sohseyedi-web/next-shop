@@ -5,6 +5,7 @@ import Loading from "@/components/Loading";
 import ProductCard from "./ProductCard";
 import Topside from "./Topside";
 import { useState } from "react";
+import Error from './../../components/Error';
 
 export default function Home() {
   const [search, setSearch] = useState("");
