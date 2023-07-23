@@ -4,6 +4,7 @@ const app = axios.create({
   baseURL: "https://fakestoreapi.com",
 });
 
+
 const http = {
   get: app.get,
   post: app.post,
