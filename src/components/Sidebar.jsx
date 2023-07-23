@@ -6,8 +6,8 @@ import Back from "./Back";
 import RadioInput from "./RadioInput";
 
 const sortItem = [
-  { id: 1, label: "Highest", value: "highest" },
-  { id: 2, label: "Lowest", value: "lowest" },
+  { id: 1, label: "Newst", value: "asc" },
+  { id: 2, label: "Oldest", value: "desc" },
 ];
 
 const Sidebar = ({ open, setOpen }) => {
@@ -25,9 +25,10 @@ const Sidebar = ({ open, setOpen }) => {
     [searchParams]
   );
 
-  const sortHandler = (e) => {
+  const changeSortHandler = (e) => {
     const value = e.target.value;
     setSort(value);
+    router.push(pathname + "?" + createQueryString("sort", value));
   };
 
   return (
@@ -37,7 +38,9 @@ const Sidebar = ({ open, setOpen }) => {
         className={`${open ? "top-0 duration-300" : "-top-52 duration-300"}
           fixed left-0 w-52 bg-slate-50 dark:bg-slate-950 text-slate-950 dark:text-slate-50 h-screen z-50  py-3 px-1`}
       >
-        <h3 className="flex items-center justify-between font-semibold mb-3">Filter By:</h3>
+        <h3 className="flex items-center justify-between font-semibold mb-3">
+          Filter By:
+        </h3>
         <div className="space-y-3">
           {sortItem.map((i) => (
             <RadioInput
@@ -45,7 +48,7 @@ const Sidebar = ({ open, setOpen }) => {
               id={i.id}
               value={i.value}
               name={"sort-item"}
-              onChange={sortHandler}
+              onChange={changeSortHandler}
               label={i.label}
               checked={sort === i.value}
             />
