@@ -1,12 +1,11 @@
 "use client";
-
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
-import Back from "./Back";
-import RadioInput from "./RadioInput";
+import Back from './../../components/Back';
+import RadioInput from './../../components/RadioInput';
 
 const sortItem = [
-  { id: 1, label: "Newst", value: "asc" },
+  { id: 1, label: "Newest", value: "asc" },
   { id: 2, label: "Oldest", value: "desc" },
 ];
 
@@ -42,17 +41,19 @@ const Sidebar = ({ open, setOpen }) => {
           Filter By:
         </h3>
         <div className="space-y-3">
-          {sortItem.map((i) => (
-            <RadioInput
-              key={i.id}
-              id={i.id}
-              value={i.value}
-              name={"sort-item"}
-              onChange={changeSortHandler}
-              label={i.label}
-              checked={sort === i.value}
-            />
-          ))}
+          <div className="space-y-3">
+            {sortItem.map((i) => (
+              <RadioInput
+                key={i.id}
+                id={i.id}
+                value={i.value}
+                name={"sort-item"}
+                label={i.label}
+                checked={sort === i.value}
+                onChange={changeSortHandler}
+              />
+            ))}
+          </div>
         </div>
       </aside>
     </>

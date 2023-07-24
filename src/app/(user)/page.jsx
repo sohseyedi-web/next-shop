@@ -13,6 +13,9 @@ export default function Home() {
   const { data, isLoading, isError } = useQuery(["get-products"], getProducts, {
     refetchInterval: 100,
   });
+ 
+  
+
 
   if (isLoading) return <Loading />;
 
@@ -25,7 +28,7 @@ export default function Home() {
   return (
     <main className="pt-28 text-center">
       <section className="max-w-7xl mx-auto">
-        <Topside search={search} setSearch={setSearch} />
+        <Topside search={search} setSearch={setSearch}/>
         <div className=" flex gap-y-6 lg:gap-x-16 items-center flex-wrap">
           {handleSearch().map((product) => (
             <ProductCard product={product} key={product.id} />
