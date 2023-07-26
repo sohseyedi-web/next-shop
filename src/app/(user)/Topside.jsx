@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import * as RiIcon from "react-icons/ri";
-import Sidebar from "../Sidebar";
+import Sidebar from './Sidebar';
 
 const Topside = ({ search, setSearch }) => {
   const [open, setOpen] = useState(false);
