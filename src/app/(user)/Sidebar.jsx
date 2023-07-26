@@ -1,8 +1,8 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
-import Back from './../../components/Back';
-import RadioInput from './../../components/RadioInput';
+import Back from "@/components/Back";
+import RadioInput from "@/components/RadioInput";
 
 const sortItem = [
   { id: 1, label: "Newest", value: "asc" },
@@ -34,8 +34,8 @@ const Sidebar = ({ open, setOpen }) => {
     <>
       <Back open={open} setOpen={setOpen} />
       <aside
-        className={`${open ? "top-0 duration-300" : "-top-52 duration-300"}
-          fixed left-0 w-52 bg-slate-50 dark:bg-slate-950 text-slate-950 dark:text-slate-50 h-screen z-50  py-3 px-1`}
+        className={`${open ? "top-0" : "-top-52"}
+          fixed left-0 w-52 bg-slate-50 dark:bg-slate-950 text-slate-950 dark:text-slate-50 h-screen z-50  py-3 px-1 transition-all duration-300`}
       >
         <h3 className="flex items-center justify-between font-semibold mb-3">
           Filter By:

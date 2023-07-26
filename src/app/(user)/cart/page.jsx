@@ -36,7 +36,7 @@ const Cart = () => {
             <div className="lg:w-[75%] lg:mx-0 mx-auto md:w-[60%] w-[90%] shadow-md rounded-md">
               {cartItems.map((cart) => (
                 <div
-                  className="mb-3 flex items-center justify-between px-4 py-2"
+                  className="mb-3 flex items-center justify-between px-6 py-3"
                   key={cart.id}
                 >
                   <div className="flex items-center">

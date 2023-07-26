@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import * as RiIcon from "react-icons/ri";
-import Sidebar from "./Sidebar";
+import Sidebar from "../Sidebar";
 
-const Topside = ({ search, setSearch, categories }) => {
+const Topside = ({ search, setSearch }) => {
   const [open, setOpen] = useState(false);
   const [searchBar, setSearchBar] = useState(true);
 
@@ -13,7 +13,7 @@ const Topside = ({ search, setSearch, categories }) => {
         className={
           searchBar
             ? "w-[1%] relative transition-all duration-300"
-            : "w-[70%] lg:w-[30%] md:w-[50%] tra relative transition-all duration-300"
+            : "w-[70%] lg:w-[30%] md:w-[50%] relative transition-all duration-300"
         }
       >
         <input
@@ -37,9 +37,7 @@ const Topside = ({ search, setSearch, categories }) => {
         Filter
         <RiIcon.RiFilter2Line size={25} />
       </div>
-      {open && (
-        <Sidebar open={open} setOpen={setOpen} categories={categories} />
-      )}
+      {open && <Sidebar open={open} setOpen={setOpen} />}
     </div>
   );
 };

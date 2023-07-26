@@ -1,40 +1,55 @@
-"use client";
+import { cookies } from "next/headers";
+import queryString from "query-string";
+import { toStringCookie } from "@/utils/toStringCookies";
 import { getProducts } from "@/services/getProducts";
-import { useQuery } from "@tanstack/react-query";
-import Loading from "@/components/Loading";
-import ProductCard from "./ProductCard";
-import Topside from "./Topside";
-import { useState } from "react";
-import Error from './../../components/Error';
+import { getCategory } from "@/services/getCategory";
+import Products from "./Products";
+export const dynamic = "force-dynamic";
 
-export default function Home() {
-  const [search, setSearch] = useState("");
+export default async function Home({ searchParams }) {
+  const cookieStore = cookies();
+  const strCookie = toStringCookie(cookieStore);
+  const categoryPromise = getCategory();
+  const productsPromise = getProducts(
+    queryString.stringify(searchParams),
+    strCookie
+  );
 
-  const { data, isLoading, isError } = useQuery(["get-products"], getProducts, {
-    refetchInterval: 100,
-  });
- 
-  
+  const [products, category] = await Promise.all([
+    productsPromise,
+    categoryPromise,
+  ]);
 
+  // const { data, isLoading, isError } = useQuery(
+  //   ["get-products"],
+  //   getProducts(queryString.stringify(searchParams), strCookie),
+  //   {
+  //     refetchInterval: 100,
+  //   }
+  // );
 
-  if (isLoading) return <Loading />;
+  // if (isLoading) return <Loading />;
 
-  if (isError) return <Error />;
+  // if (isError) return <Error />;
 
-  const handleSearch = () => {
-    return data?.filter((i) => i.title.toLowerCase().includes(search));
-  };
+  // const handleSearch = () => {
+  //   return data?.filter((i) => i.title.toLowerCase().includes(search));
+  // };
 
   return (
     <main className="pt-28 text-center">
       <section className="max-w-7xl mx-auto">
-        <Topside search={search} setSearch={setSearch}/>
-        <div className=" flex gap-y-6 lg:gap-x-16 items-center flex-wrap">
-          {handleSearch().map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-        </div>
+        <Products products={products} />
       </section>
     </main>
   );
+}
+
+{
+  /* <Topside />
+        <div className=" flex gap-y-6 lg:gap-x-16 items-center flex-wrap">
+          {products.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))}
+        </div> */
 }
