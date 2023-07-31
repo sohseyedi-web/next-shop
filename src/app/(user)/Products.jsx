@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import Topside from "./Topside";
 import { useState } from "react";
+import Link from "next/link";
 
 const Products = ({ products }) => {
   const dispatch = useDispatch();
@@ -33,16 +34,19 @@ const Products = ({ products }) => {
                 className="object-contain h-full w-full rounded-b-md bg-transparent"
               />
             </div>
-            <div className="text-center my-3 font-medium">
+            <Link
+              href={`/${product.id}`}
+              className="text-center my-3 font-medium"
+            >
               {product.title.slice(0, 18)}
-            </div>
+            </Link>
             <div className="my-3 flex items-center justify-between px-3">
               <span>{Math.ceil(product.price)}$</span>
               <span>{product.rating.rate}</span>
             </div>
             <button
               onClick={() => addItemHandler(product)}
-              className="w-full mt-3 mb-1 h-[45px] bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-500 rounded-md text-white hover:bg-indigo-600 transition-all duration-300"
+              className="w-full mt-3 mb-1 h-[45px] bg-indigo-700  rounded-md text-white hover:bg-indigo-600 transition-all duration-300"
             >
               Add To Cart
             </button>

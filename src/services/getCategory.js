@@ -1,5 +1,5 @@
 import http from "./https";
-export async function getCategory() {
-  const { data } = await http.get("/products/category");
-  return data;
+
+export function getAllCategory() {
+  return http.get(`/products/categories`).then((data) => data.data);
 }

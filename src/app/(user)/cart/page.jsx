@@ -95,7 +95,7 @@ const Cart = () => {
             </div>
           </>
         ) : (
-          <div className="text-center text-2xl text-indigo-600 dark:text-white font-semibold w-full">
+          <div className="text-center text-2xl text-indigo-600 font-semibold w-full">
             No Items
           </div>
         )}

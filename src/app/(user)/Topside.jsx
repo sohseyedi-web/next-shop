@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import * as RiIcon from "react-icons/ri";
-import Sidebar from './Sidebar';
+import Sidebar from "./Sidebar";
 
 const Topside = ({ search, setSearch }) => {
   const [open, setOpen] = useState(false);
@@ -21,10 +21,10 @@ const Topside = ({ search, setSearch }) => {
           onChange={(e) => setSearch(e.target.value)}
           type="text"
           placeholder="Search..."
-          className="w-full text-gray-900 rounded-md shadow-md text-lg h-[45px] border-none outline-none focus:outline-indigo-600 dark:focus:outline-[#2eb573] pl-9 transition-all duration-300"
+          className="w-full text-gray-900 rounded-md shadow-md text-lg h-[45px] border-none outline-none focus:outline-indigo-600 pl-9 transition-all duration-300"
         />
         <span
-          className="cursor-pointer absolute left-1 top-2 dark:text-[#2eb573] text-indigo-600 "
+          className="cursor-pointer absolute left-1 top-2 text-indigo-600 "
           onClick={() => setSearchBar(!searchBar)}
         >
           <RiIcon.RiSearch2Line size={26} />
@@ -37,7 +37,9 @@ const Topside = ({ search, setSearch }) => {
         Filter
         <RiIcon.RiFilter2Line size={25} />
       </div>
-      {open && <Sidebar open={open} setOpen={setOpen} />}
+      {open && (
+        <Sidebar open={open} setOpen={setOpen}/>
+      )}
     </div>
   );
 };

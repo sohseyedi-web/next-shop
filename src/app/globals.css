@@ -1,18 +1,15 @@
-@import 'animate.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
 @layer base {
   body {
-    @apply bg-[#fefefe];
-    @apply dark:bg-[#252525] dark:text-gray-50 bg-gray-50 text-gray-900
+    @apply bg-[#fefefe] text-gray-900;
   }
 }
